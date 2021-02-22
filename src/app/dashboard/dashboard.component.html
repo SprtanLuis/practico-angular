@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col p-0">
+                <app-nuevo-proveedor></app-nuevo-proveedor>            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-5">
+            <h1>Lista de proveedores</h1>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Estatus</th>
+                    <th scope="col">Telefono</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let proveedor of provedores">
+                        <td scope="row">{{proveedor.nombre}}</td>
+                        <td scope="row">{{proveedor.apellido}}</td>
+                        <td scope="row">{{proveedor.empresa}}</td>
+                        <td scope="row">
+                            <span class="badge badge-pill badge-success" *ngIf="proveedor.status; else elseBlock">activo</span>
+                            <ng-template #elseBlock>
+                                <span class="badge badge-pill badge-danger">Suspendido</span> 
+                            </ng-template>
+                        </td>
+                        <td scope="row">{{proveedor.phone}}</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</div>

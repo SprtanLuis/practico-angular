@@ -1,0 +1,56 @@
+<div class="card">
+  <img class="card-img-top" src="../../assets/4393.jpg" alt="Mi Examen" style="height: 50%;">
+  <div class="card-header">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login"
+          aria-selected="true">Iniciar Sesión</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register"
+          aria-selected="false">Registrarse</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+          <form [formGroup]="formLogin">
+              <div class="mb-3">
+                <label for="emailL">Correo electrónico</label>
+                <input type="email" class="form-control" id="emailL" formControlName="email" placeholder="Ingrese correo">
+              </div>
+              <div class="mb-5">
+                <label for="passwordL">Contraseña</label>
+                <input type="password" class="form-control" autocomplete="off" id="passwordL" formControlName="password" placeholder="Ingrese su contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="formLogin.invalid" (click)="submitLogin()">Iniciar Sesión</button>
+          </form>
+      </div>
+      <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+        <form [formGroup]="formRegister">
+            <div class="mb-3">
+                <label for="nameR">Nombre completo</label>
+                <input  type="text" class="form-control" autocomplete="off" id="nameR" formControlName="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="emailR">Correo electrónico</label>
+                <input type="email" class="form-control" id="emailR" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="passwordR">Contraseña</label>
+                <input type="password" class="form-control" autocomplete="off" id="passwordR" formControlName="password">
+            </div>
+            <div class="mb-3">
+                <label for="passwordRR">Confirmar contraseña</label>
+                <input type="password" class="form-control" autocomplete="off" id="passwordRR" formControlName="passwordAgain">
+                <div *ngIf="formRegister.hasError('notSame')" class="text-danger">
+                  Las contraseñas no coinciden
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="formRegister.invalid" (click)="submitRegister()" >Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
